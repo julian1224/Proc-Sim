@@ -1,0 +1,15 @@
+html {
+background-image: url('dodo.jpg');
+background-position: center;
+background-attachment: fixed;
+
+}
+body {
+background-color: rgba(100, 100, 100, 0.4);
+}
+hr {
+color: white;
+}
+select {
+width: 140px;
+}

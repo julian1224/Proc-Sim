@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Come get some! </title>
+    <link rel="stylesheet" href="puckthis.css">
+  </head>
+  <h1> Proc Simulator </h1>
+  <hr>
+  <body>
+    <h2> Damage intake </h2>
+    <p> Dodge chance, miss chance, blinds, accuracy and damage block</p>
+ <div class="def">
+  <select id="item1def" name="Item #1">
+    <option> None </option>
+    <option> Talisman of Evasion </option>
+    <option> Butterfly </option>
+    <option> Solar Crest </option>
+    <option> Heaven's Halberd </option>
+    <option> Stout Shield </option>
+    <option> Vanguard </option>
+  </select>
+  <select id="item2def" name="Item #2">
+    <option> None </option>
+    <option> Talisman of Evasion </option>
+    <option> Butterfly </option>
+    <option> Solar Crest </option>
+    <option> Heaven's Halberd </option>
+  </select>
+  <select id="item3def" name="Item #3">
+    <option> None </option>
+    <option> Talisman of Evasion </option>
+    <option> Butterfly </option>
+    <option> Solar Crest </option>
+    <option> Heaven's Halberd </option>
+  </select>
+  <br>
+  <select id="item4def" name="Item #4">
+    <option> None </option>
+    <option> Talisman of Evasion </option>
+    <option> Butterfly </option>
+    <option> Solar Crest </option>
+    <option> Heaven's Halberd </option>
+  </select>
+  <select id="item5def" name="Item #5">
+    <option> None </option>
+    <option> Talisman of Evasion </option>
+    <option> Butterfly </option>
+    <option> Solar Crest </option>
+    <option> Heaven's Halberd </option>
+  </select>
+  <select id="item6def" name="Item #6">
+    <option> None </option>
+    <option> Talisman of Evasion </option>
+    <option> Butterfly </option>
+    <option> Solar Crest </option>
+    <option> Heaven's Halberd </option>
+  </select>
+
+  <br> <br>
+    <input type="checkbox"> Uphill advantage </input>
+ </div>
+<!--  -->
+          <hr>
+<!-- -->
+    <h2> Damage output </h2>
+    <p> Crits, bashes and other procs. </p>
+  <div class="atk">
+    <select id="item1atk" name="Item #1">
+      <option> None </option>
+      <option> Monkey King Bar </option>
+    </select>
+    <select id="item2atk" name="Item #2">
+      <option> None </option>
+      <option> Monkey King Bar </option>
+    </select>
+    <select id="item3atk" name="Item #3">
+      <option> None </option>
+      <option> Monkey King Bar </option>
+    </select>
+    <br>
+    <select id="item4atk" name="Item #4">
+      <option> None </option>
+      <option> Monkey King Bar </option>
+    </select>
+    <select id="item5atk" name="Item #5">
+      <option> None </option>
+      <option> Monkey King Bar </option>
+    </select>
+    <select id="item6atk" name="Item #6">
+      <option> None </option>
+      <option> Monkey King Bar </option>
+      <option> Javelin </option>
+      <option> Skull Basher </option>
+      <option> Abbysal Blade </option>
+      <option> Bloodthorn </option>
+      <option> Daedalus </option>
+    </select>
+  </div>
+  <br> <br>
+    <input type="checkbox"> Flying </input>
+<!-- -->
+<hr>
+
+<button>Trade blows!</button>
+
+</body>
+<hr>
+
+<pre>
+Formula:
+
+    Miss chance = (1 - evasion from source 1) x (1 - blind from source 2) ... x (1 - evasion/blind from source n) x uphill miss chance
+
+                    = Πn (1 - evasion/blindn) x uphill miss chance <~~ 25%
+
+    Hit chance = 1 - [(1 - accuracy from source 1) x (1 - true strike from source 2)] = 1 - Πn (1 - accuracy/true striken)
+
+    Final hit chance = 1 - miss chance + (hit chance * miss chance) = 1 - miss chance x (1 - hit chance)
+
+    Final miss chance = 1 - final hit chance = miss chance x (1 - hit chance)
+
+  /Multiplicative Stacking/
+  Values that are stacked multiplicatively have diminishing returns.
+  The stacking effect can be calculated by the formula "1-(1-x)*(1-y)*(1-z)*..."
+  where the variables x,y and z represent the individual percentages.
+
+  /Magic Resistane/
+  Magic resistance stacks multiplicatively.
+  For example when a spell deals 100 magical damage, a hero's natural 25% magic resistance reduces it to 75 damage.
+  Now when that hero has a Hood of Defiance, the 75 damage get reduced by 30% down to 52.5 damage.
+  If he has a 2nd hood, that 52.5 damage get reduced by 30% down to 36.75 damage, etc.
+  Let's take Anti-mage (25% base magic resistance) with level 4 Spell Shield icon.png Spell Shield (50% magic resistance) and a Hood of Defiance (25% magic resistance):
+  1-(1-0.25)*(1-0.50)*(1-0.25)=0.71875 = 71.88% magic resistance.
+
+
+  /Limited Stacking/
+  Those events stack multiplicatively, but in case two events happen at the same time,
+  only the highest value is kept or the duration is refreshed.
+
+  * Crits
+  * Damage Block </pre>
+
+    <p> defense procs </p>
+    <ul>
+      <li> Radiance debuff -> 17% (1/6) miss chance </li>
+      <li> Riki Smoke -> 40, 50, 60, 70% miss chance</li>
+      <li> Laser -> 100% miss chance </li>
+      <li> Whirling Axes -> 60% miss chance </li>
+      <li> Uphill miss chance 25% (1/4) </li>
+      <li> Bloodthorn -> 100% hit chance to debuffed / 100% chance to get crit</li>
+      <li> Solar Crest -> 35% hit chance to debuffed </li>
+      <li> Damage block -> 50% block chance </li>
+      <li> Crimson Guard buff -> 100% block chance </li>
+      <li> Mjoll active -> 20% chance on getting hit </li>
+    </ul>
+
+    <p> attack procs </p>
+    <ul>
+      <li> MKB -> 35% minibash and true strike  </li>
+      <li> Javelin -> 25% proc chance </li>
+      <li> Crystalys/bloodthorn -> 20% chance </li>
+      <li> Daedalus -> 30% chance </li>
+      <li> Basher / Abyssal  -> 25% melee / 10% ranged </li>
+      <li> mjoll/mael -> 25% chance </li>
+      <li> Sange -> 30% chance</li>
+      <li> halberd -> 35% chance </li>
+      <li> S+Y -> 40% chance </li>
+    </ul>
+</html>
