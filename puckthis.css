@@ -2,7 +2,9 @@ html {
 background-image: url('dodo.jpg');
 background-position: center;
 background-attachment: fixed;
-
+color: white;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+font-family: "Lucida Console", Monaco, monospace;
 }
 body {
 background-color: rgba(100, 100, 100, 0.4);
