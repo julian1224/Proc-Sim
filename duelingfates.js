@@ -1,22 +1,11 @@
 // start script
 
 // get vars by id
-var flying;
-var uphill;
+var flying, uphill;
 // def //
-var def1;
-var def2;
-var def3;
-var def4;
-var def5;
-var def6;
+var def1, def2, def3, def4, def5, def6;
 // atk //
-var atk1;
-var atk2;
-var atk3;
-var atk4;
-var atk5;
-var atk6;
+var atk1, atk2, atk3, atk4, atk5, atk6;
 
 // vars for items
 function testButton() {
