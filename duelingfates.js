@@ -31,9 +31,10 @@ function testButton() {
   document.getElementById("test").innerHTML = "Item 1 is " + def1 + " and " + atk1 + ".";
   document.getElementById("test2").innerHTML = "Flying is " + flying + " and uphill is " + uphill + ".";
   // deselect everything at the end
-  for(i = 0; i < 6; i++) {
-  document.getElementById('atk' + i).selectedIndex = "-1";
+  for(i = 1; i < 7; i++) {
+  document.getElementById("item" + i + "atk").selectedIndex = "-1";
 
-  document.getElementById('def' + i).selectedIndex = "-1";
+  document.getElementById("item" + i + "def").selectedIndex = "-1";
+
               }
             }
