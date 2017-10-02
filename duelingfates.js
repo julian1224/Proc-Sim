@@ -1,47 +1,47 @@
 // start script
 
-// get vars by id
-var flying, uphill;
-// def //
-var def1, def2, def3, def4, def5, def6;
-// atk //
-var atk1, atk2, atk3, atk4, atk5, atk6;
-//
-var atkInv = [], defInv = [];
-// vars for item objects
-var abbysalBlade = {atkMathType:"bash", atkValue:"0.25", defMathType:"block", defvalue:"0.5"};
-var heavensHalberd = {atkMathType:"debuff", atkValue:"0.35", defMathType:"evasion", defValue:"0.25"};
-var butterfly = {defMathType:"evasion", defValue:"0.35"};
-var solarCrest = {defMathType:"evasion", defValue:"0.2"};
-var talismanOfEvasion = {defMathType:"evasion", defValue:"0.2"};
-var stoutShield = {defMathType:"block", defValue: "0.5"};
-var poorMansShield = {defMathType:"block", defValue:"0.5"};
-var vanguard = {defMathType:"block", defValue: "0.5"};
-var bloodthorn = {atkMathType:"crit", atkValue:"0.2"};
-var crystalys = {atkMathType:"crit", atkValue:"0.2"};
-var daedalus = {atkMathType: "crit", atkValue:"0.3"};
-var javelin = {atkMathType: "damage", atkValue:"0.25"};
-var maelstrom = {atkMathType: "chain", atkValue:"0.25"};
-var mjollnir = {atkMathType: "chain", atkValue:"0.25"};
-var monkeyKingBar = {atkMathType:"minibash", atkValue:"0.35", trueStrike: true};
-var sange = {atkMathType:"debuff", atkValue:"0.3"};
-var sangeAndYasha = {atkMathType:"debuff", atkValue:"0.4"};
-var skullBasher = {atkMathType:"bash", atkValue:"0.25"};
+
+//camelize script
+  camelize = function camelize(str) {
+      return str.replace(/\W+(.)/g, function(match, chr)
+       {
+            return chr.toUpperCase();
+        });
+    }
 
 
+function evasionCheck() {
+  var arrayEvasionItems = [];
+  var evasionMath;
+// redefine for function
+
+for(i=1; i<7; i++){
+  currentItem = "def" + i;
+  if (currentItem.defMathType == "evasion") {
+    arrayEvasionItems.push(currentItem);
+    console.log("pushed to array");
+  }
+}
+// loop to check all def items
+  for (i=0; i < arrayEvasionItems.length; i++){
+// construct math
+
+  }
+
+}
+
+//start runsim
 
 function runSim() {
 // set vars again on button press
-  var flying, uphill;
-  // def //
-  var def1 = item1def.value; var def2 = item2def.value; var def3 = item3def.value;
-  var def4 = item4def.value; var def5 = item5def.value; var def6 = item6def.value;
-  // atk //
-  var atk1 = item1atk.value; var atk2 = item2atk.value; var atk3 = item3atk.value;
-  var atk4 = item4atk.value; var atk5 = item5atk.value; var atk6 = item6atk.value;
 
+var def1 = camelize(item1def.value); var def2 = camelize(item2def.value); var def3 = camelize(item3def.value);
+var def4 = camelize(item4def.value); var def5 = camelize(item5def.value); var def6 = camelize(item6def.value);
+// atk //
+var atk1 = camelize(item1atk.value); var atk2 = camelize(item2atk.value); var atk3 = camelize(item3atk.value);
+var atk4 = camelize(item4atk.value); var atk5 = camelize(item5atk.value); var atk6 = camelize(item6atk.value);
 
-
+// checkbox bools
 
   if (document.getElementById("amUphill").checked) {
     uphill = true;
@@ -54,13 +54,22 @@ function runSim() {
   } else {
     flying = false;
   }
-for (i = 1; i < 7; i++){
-  var atkInv = [];
-  var defInv = [];
+
+
+// edit text for testing reasons
+  document.getElementById("test").innerHTML = "Item 1 is " + item1def.value + " and " + item1atk.value + ".";
+  document.getElementById("test2").innerHTML = "Flying is " + flying + " and uphill is " + uphill + ".";
+
+ evasionCheck();
+//
+if (getHit = true) {
+document.getElementById("consoleLine1").innerHTML = ">Attacking side missed!";
+} else if (!getHit) {
+  document.getElementById("consoleLine1").innerHTML = ">Defending side got hit!";
+} else {
+  console.log("Huh?");
 }
 
-  document.getElementById("test").innerHTML = "Item 1 is " + def1 + " and " + atk1 + ".";
-  document.getElementById("test2").innerHTML = "Flying is " + flying + " and uphill is " + uphill + ".";
   // deselect everything at the end
   for(i = 1; i < 7; i++) {
   document.getElementById("item" + i + "atk").selectedIndex = "0";
@@ -68,4 +77,5 @@ for (i = 1; i < 7; i++){
   document.getElementById("item" + i + "def").selectedIndex = "0";
 
               }
-            }
+
+}
