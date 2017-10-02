@@ -15,3 +15,6 @@ color: white;
 select {
 width: 140px;
 }
+#console {
+  height: 300px;
+}
