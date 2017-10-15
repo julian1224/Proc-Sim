@@ -20,6 +20,7 @@ for(i=1; i<7; i++){
   if (currentItem.defMathType == "evasion") {
     arrayEvasionItems.push(currentItem);
     console.log("pushed to array");
+
   }
 }
 // loop to check all def items
@@ -34,13 +35,11 @@ for(i=1; i<7; i++){
 
 function runSim() {
 // set vars again on button press
-
 var def1 = camelize(item1def.value); var def2 = camelize(item2def.value); var def3 = camelize(item3def.value);
 var def4 = camelize(item4def.value); var def5 = camelize(item5def.value); var def6 = camelize(item6def.value);
 // atk //
 var atk1 = camelize(item1atk.value); var atk2 = camelize(item2atk.value); var atk3 = camelize(item3atk.value);
 var atk4 = camelize(item4atk.value); var atk5 = camelize(item5atk.value); var atk6 = camelize(item6atk.value);
-
 // checkbox bools
 
   if (document.getElementById("amUphill").checked) {
@@ -62,12 +61,23 @@ var atk4 = camelize(item4atk.value); var atk5 = camelize(item5atk.value); var at
 
  evasionCheck();
 //
-if (getHit = true) {
-document.getElementById("consoleLine1").innerHTML = ">Attacking side missed!";
-} else if (!getHit) {
-  document.getElementById("consoleLine1").innerHTML = ">Defending side got hit!";
+if (getHit == true) {
+document.getElementById("consoleLine1").innerHTML = ">Defending side got hit!";
+} else if (getHit == false) {
+  document.getElementById("consoleLine1").innerHTML = ">Attacking side missed!";
 } else {
   console.log("Huh?");
+}
+function getObject(propname)
+{
+  return window[propname]
+}
+console.log(atk1+": "+window[atk1]);
+console.log(atk1+": "+getObject(atk1));
+console.log(atk1+".value: "+getObject(atk1).value);
+for(var all in window[atk1])
+{
+  console.log(all+":"+window[atk1][all])
 }
 
   // deselect everything at the end
